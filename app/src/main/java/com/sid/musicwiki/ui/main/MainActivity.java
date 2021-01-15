@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sid.musicwiki.R;
 import com.sid.musicwiki.data.genreapi.Genre;
 import com.sid.musicwiki.databinding.ActivityMainBinding;
+import com.sid.musicwiki.ui.genredetails.GenreDetailsActivity;
 
 public class MainActivity extends AppCompatActivity implements GenreListAdapter.GenreListAdapterListener {
 
@@ -46,6 +47,6 @@ public class MainActivity extends AppCompatActivity implements GenreListAdapter.
 
     @Override
     public void onGenreItemClick(Genre genreData) {
-
+        startActivity(GenreDetailsActivity.newIntent(this, genreData));
     }
 }
