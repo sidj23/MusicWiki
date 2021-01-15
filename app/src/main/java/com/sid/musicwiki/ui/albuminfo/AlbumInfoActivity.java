@@ -17,6 +17,7 @@ import com.sid.musicwiki.R;
 import com.sid.musicwiki.data.albumapi.AlbumData;
 import com.sid.musicwiki.data.artistapi.ArtistData;
 import com.sid.musicwiki.data.genreapi.Genre;
+import com.sid.musicwiki.data.tracksapi.TrackData;
 import com.sid.musicwiki.databinding.ActivityAlbumInfoBinding;
 import com.sid.musicwiki.ui.genredetails.GenreDetailsActivity;
 import com.sid.musicwiki.ui.genredetails.genrefrag.GenreDataItemAdapter;
@@ -120,6 +121,7 @@ public class AlbumInfoActivity extends AppCompatActivity implements GenreListAda
 
     @Override
     public void onGridItemClick(Object gridObject) {
-        startActivity(AlbumInfoActivity.newIntent(this, gridObject));
+        if (!(gridObject instanceof TrackData))
+            startActivity(AlbumInfoActivity.newIntent(this, gridObject));
     }
 }

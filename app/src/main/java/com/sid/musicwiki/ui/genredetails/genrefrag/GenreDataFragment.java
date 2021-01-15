@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.sid.musicwiki.R;
+import com.sid.musicwiki.data.tracksapi.TrackData;
 import com.sid.musicwiki.databinding.FragmentGenreDataBinding;
 import com.sid.musicwiki.ui.albuminfo.AlbumInfoActivity;
 
@@ -73,6 +74,7 @@ public class GenreDataFragment extends Fragment implements GenreDataItemAdapter.
 
     @Override
     public void onGridItemClick(Object gridObject) {
-        startActivity(AlbumInfoActivity.newIntent(getActivity(), gridObject));
+        if (!(gridObject instanceof TrackData))
+            startActivity(AlbumInfoActivity.newIntent(getActivity(), gridObject));
     }
 }
