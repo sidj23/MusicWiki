@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableList;
 
 import com.sid.musicwiki.data.genrewikiapi.GenreAllResponse;
@@ -24,6 +25,7 @@ import static com.sid.musicwiki.util.AppConstants.API_KEY;
 
 public class GenreDataViewModel {
     public final ObservableList<Object> objectObservableList = new ObservableArrayList<>();
+    public final ObservableBoolean isProgressVisible;
     private Context context;
     private String dataType;
     private ApiInterface apiInterface;
@@ -31,6 +33,7 @@ public class GenreDataViewModel {
     public GenreDataViewModel(Context context) {
         this.context = context;
         apiInterface = ApiUtil.provideRetrofit().create(ApiInterface.class);
+        isProgressVisible = new ObservableBoolean(true);
     }
 
     public void setUpDataSource(String dataType, String genreName) {
@@ -99,6 +102,7 @@ public class GenreDataViewModel {
     private void setObjectObservableList(List<Object> objectList) {
         objectObservableList.clear();
         objectObservableList.addAll(objectList);
+        isProgressVisible.set(false);
     }
 
 

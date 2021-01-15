@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import com.sid.musicwiki.data.Attr;
 import com.sid.musicwiki.data.Image;
 import com.sid.musicwiki.data.artistapi.ArtistData;
+import com.sid.musicwiki.data.genreapi.Wiki;
 
 import java.util.List;
 
@@ -44,6 +45,9 @@ public class AlbumData implements Parcelable {
     @SerializedName("@attr")
     @Expose
     private Attr attr;
+    @SerializedName("wiki")
+    @Expose
+    private Wiki wiki;
 
     protected AlbumData(Parcel in) {
         name = in.readString();
@@ -53,6 +57,24 @@ public class AlbumData implements Parcelable {
         artistData = in.readParcelable(ArtistData.class.getClassLoader());
         image = in.createTypedArrayList(Image.CREATOR);
         attr = in.readParcelable(Attr.class.getClassLoader());
+        wiki = in.readParcelable(Wiki.class.getClassLoader());
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(duration);
+        dest.writeString(mbid);
+        dest.writeString(url);
+        dest.writeParcelable(artistData, flags);
+        dest.writeTypedList(image);
+        dest.writeParcelable(attr, flags);
+        dest.writeParcelable(wiki, flags);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public String getName() {
@@ -111,20 +133,12 @@ public class AlbumData implements Parcelable {
         this.attr = attr;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public Wiki getWiki() {
+        return wiki;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(duration);
-        parcel.writeString(mbid);
-        parcel.writeString(url);
-        parcel.writeParcelable(artistData, i);
-        parcel.writeTypedList(image);
-        parcel.writeParcelable(attr, i);
+    public void setWiki(Wiki wiki) {
+        this.wiki = wiki;
     }
 
 }

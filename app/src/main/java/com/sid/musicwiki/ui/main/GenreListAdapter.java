@@ -2,6 +2,7 @@ package com.sid.musicwiki.ui.main;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,9 +20,11 @@ public class GenreListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     List<Genre> genreList = new ArrayList<>();
 
     GenreListAdapterListener listener;
+    private Boolean isFromAlbumInfo;
 
-    public GenreListAdapter(GenreListAdapterListener listener) {
+    public GenreListAdapter(GenreListAdapterListener listener, Boolean isFromAlbumInfo) {
         this.listener = listener;
+        this.isFromAlbumInfo = isFromAlbumInfo;
     }
 
     public void clearItems() {
@@ -71,6 +74,9 @@ public class GenreListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             if (genre != null) {
                 genreItemViewModel = new GenreItemViewModel(genre, this);
                 itemGenreBinding.setViewModel(genreItemViewModel);
+                if (isFromAlbumInfo)
+                    itemGenreBinding.igHeadLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                itemGenreBinding.executePendingBindings();
             }
         }
 

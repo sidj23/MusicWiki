@@ -3,6 +3,7 @@ package com.sid.musicwiki.ui.genredetails;
 import android.content.Context;
 
 import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ public class GenreDetailsViewModel {
 
     public final ObservableField<String> genreSummary;
     public final ObservableList<Fragment> fragmentList = new ObservableArrayList<>();
+    public final ObservableBoolean isProgressVisible;
     private Context context;
     private ApiInterface apiInterface;
     private PreferenceHelper preferenceHelper;
@@ -34,6 +36,7 @@ public class GenreDetailsViewModel {
         apiInterface = ApiUtil.provideRetrofit().create(ApiInterface.class);
         preferenceHelper = new PreferenceHelper(context);
         genreSummary = new ObservableField<>("");
+        isProgressVisible = new ObservableBoolean(true);
     }
 
     public void setUpDataSource(Genre genre) {
@@ -67,5 +70,6 @@ public class GenreDetailsViewModel {
 
     private void setBasicGenreData(Genre genreData) {
         genreSummary.set(genreData.getWiki().getSummary());
+        isProgressVisible.set(false);
     }
 }

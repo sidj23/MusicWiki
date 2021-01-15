@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -26,9 +27,213 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="240dp">
+                    android:layout_height="240dp"
+                    android:visibility="@{viewModel.isArtistDataVisible ? View.GONE:View.VISIBLE}">
+
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        app:imageUrl="@{viewModel.imageUrl}" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_gradeint" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_margin="8dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_centerInParent="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_margin="4dp"
+                            android:gravity="center"
+                            android:minLines="1"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:text="@{viewModel.title}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:minLines="1"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:text="@{viewModel.artistName}" />
+
+                    </LinearLayout>
 
                 </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:visibility="@{viewModel.isArtistDataVisible ? View.VISIBLE:View.GONE}">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        app:imageUrl="@{viewModel.imageUrl}" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_gradeint" />
+
+                    <TextView
+                        android:id="@+id/aai_album_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_margin="4dp"
+                        android:gravity="center"
+                        android:minLines="1"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:layout_centerInParent="true"
+                        android:text="@{viewModel.title}" />
+
+
+                    <LinearLayout
+                        android:layout_below="@+id/aai_album_tv"
+                        android:layout_width="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="16dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:text="@{viewModel.playCountData}" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:text="@{viewModel.playCountHint}" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:text="@{viewModel.followerData}" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:text="@{viewModel.followerHint}" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/aai_genre_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:genreAdapter="@{viewModel.genreObservableList}"
+                    android:scrollbars="horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_margin="8dp"
+                    android:textColor="@color/black"
+                    android:text="@{viewModel.description}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.isTopTrackDataVisible ? View.VISIBLE:View.GONE}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_margin="8dp"
+                        android:textColor="@color/black"
+                        android:text="@{viewModel.topTrackHint}" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/aai_track_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="horizontal"
+                        app:genreDataAdapter="@{viewModel.trackObservableList}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.isTopAlbumDataVisible ? View.VISIBLE:View.GONE}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_margin="8dp"
+                        android:textColor="@color/black"
+                        android:text="@{viewModel.topAlbumHint}" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/aai_album_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="horizontal"
+                        app:genreDataAdapter="@{viewModel.albumObservableList}" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 

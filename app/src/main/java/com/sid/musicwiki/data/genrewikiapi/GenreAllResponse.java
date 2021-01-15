@@ -19,6 +19,12 @@ public class GenreAllResponse {
     @SerializedName("tracks")
     @Expose
     TrackResponse trackResponse;
+    @SerializedName("toptracks")
+    @Expose
+    TrackResponse topTrackResponse;
+    @SerializedName("topalbums")
+    @Expose
+    AlbumResponse topAlbumResponse;
 
     public ArtistResponse getArtistResponse() {
         return artistResponse;
@@ -44,6 +50,21 @@ public class GenreAllResponse {
         this.albumResponse = albumResponse;
     }
 
+    public TrackResponse getTopTrackResponse() {
+        return topTrackResponse;
+    }
+
+    public void setTopTrackResponse(TrackResponse topTrackResponse) {
+        this.topTrackResponse = topTrackResponse;
+    }
+
+    public AlbumResponse getTopAlbumResponse() {
+        return topAlbumResponse;
+    }
+
+    public void setTopAlbumResponse(AlbumResponse topAlbumResponse) {
+        this.topAlbumResponse = topAlbumResponse;
+    }
 
     public class AlbumResponse {
         @SerializedName("album")

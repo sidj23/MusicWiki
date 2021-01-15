@@ -12,52 +12,65 @@
 
     </data>
 
-    <com.sid.musicwiki.custom.SquareRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_margin="8dp"
-        android:elevation="4dp"
-        android:onClick="@{()->viewModel.onGridItemClick()}"
-        android:layout_height="match_parent"
-        android:background="?attr/selectableItemBackground">
+    <LinearLayout
+        android:id="@+id/igi_square_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:imageUrl="@{viewModel.imageUrl}" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_gradeint" />
-
-        <LinearLayout
+        <com.sid.musicwiki.custom.SquareRelativeLayout
             android:layout_width="match_parent"
             android:layout_margin="8dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_centerInParent="true">
+            android:elevation="4dp"
+            android:onClick="@{()->viewModel.onGridItemClick()}"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground">
 
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_margin="4dp"
-                android:text="@{viewModel.title}" />
+                android:layout_centerInParent="true"
+                app:imageUrl="@{viewModel.imageUrl}" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_gradeint" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_margin="8dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:visibility="@{viewModel.isArtistVisible ? View.VISIBLE:View.GONE}"
-                android:text="@{viewModel.artistName}" />
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_centerInParent="true">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:minLines="1"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="@{viewModel.title}" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:minLines="1"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:visibility="@{viewModel.isArtistVisible ? View.VISIBLE:View.GONE}"
+                    android:text="@{viewModel.artistName}" />
 
-    </com.sid.musicwiki.custom.SquareRelativeLayout>
+            </LinearLayout>
+        </com.sid.musicwiki.custom.SquareRelativeLayout>
+    </LinearLayout>
 </layout>

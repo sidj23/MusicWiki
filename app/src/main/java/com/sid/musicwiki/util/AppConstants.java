@@ -17,4 +17,10 @@ public class AppConstants {
     public static final String API_GENRE_ALBUM_METHOD = "tag.gettopalbums";
     public static final String API_GENRE_ARTIST_METHOD = "tag.gettopartists";
     public static final String API_GENRE_TRACK_METHOD = "tag.gettoptracks";
+
+    public static final String API_ALBUM_INFO_METHOD = "album.getinfo";
+    public static final String API_ARTISTS_INFO_METHOD = "artist.getinfo";
+
+    public static final String API_ARTISTS_TOP_ALBUM_METHOD = "artist.getTopAlbums";
+    public static final String API_ARTISTS_TOP_TRACK_METHOD = "artist.getTopTracks";
 }

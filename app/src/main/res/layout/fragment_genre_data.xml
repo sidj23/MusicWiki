@@ -12,10 +12,9 @@
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fgd_data_rv"
@@ -23,6 +22,6 @@
             android:layout_height="match_parent"
             app:genreDataAdapter="@{viewModel.objectObservableList}" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>

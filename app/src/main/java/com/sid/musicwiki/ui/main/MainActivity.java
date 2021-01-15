@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements GenreListAdapter.
     private void setUpView() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        genreListAdapter = new GenreListAdapter(this);
+        genreListAdapter = new GenreListAdapter(this, false);
 
         mainBinding.amGenreRv.setLayoutManager(gridLayoutManager);
         mainBinding.amGenreRv.setAdapter(genreListAdapter);

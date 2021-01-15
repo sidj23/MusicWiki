@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.sid.musicwiki.R;
 import com.sid.musicwiki.databinding.FragmentGenreDataBinding;
+import com.sid.musicwiki.ui.albuminfo.AlbumInfoActivity;
 
 public class GenreDataFragment extends Fragment implements GenreDataItemAdapter.GenreDataItemAdapterListener {
 
@@ -60,7 +61,7 @@ public class GenreDataFragment extends Fragment implements GenreDataItemAdapter.
 
     private void setUpView() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        genreDataItemAdapter = new GenreDataItemAdapter(this);
+        genreDataItemAdapter = new GenreDataItemAdapter(this, false, 0);
         fragmentBinding.fgdDataRv.setLayoutManager(gridLayoutManager);
         fragmentBinding.fgdDataRv.setAdapter(genreDataItemAdapter);
     }
@@ -72,6 +73,6 @@ public class GenreDataFragment extends Fragment implements GenreDataItemAdapter.
 
     @Override
     public void onGridItemClick(Object gridObject) {
-
+        startActivity(AlbumInfoActivity.newIntent(getActivity(), gridObject));
     }
 }
